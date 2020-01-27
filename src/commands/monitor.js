@@ -122,7 +122,7 @@ class MonitorCommand extends Command {
     // const agent = new https.Agent({
     //   rejectUnauthorized: false
     // });
-    if (isValidUrl(fileName)) {
+    if (isValidUrl(fileName.trim())) {
       this.log(`This is the url name you gave me: ${fileName}`);
       instance
         .get(fileName)
