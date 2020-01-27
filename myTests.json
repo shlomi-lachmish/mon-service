@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Aytee Main Service",
+    "type": "GET",
+    "url": "https://itsupport.sap.com",
+    "tests": {
+      "status": 200
+    }
+  },
+  {
+    "id": 2,
+    "name": "OCR service",
+    "type": "GET",
+    "url": "https://ocr.cfapps.sap.hana.ondemand.com/api1/ocr",
+    "tests": {
+      "status": 405
+    }
+  },
+  {
+    "id": 3,
+    "name": "WINS service",
+    "type": "POST",
+    "payload": {
+      "name": "ilapp11"
+    },
+    "url": "https://wins.internal.cfapps.sap.hana.ondemand.com/resolveWins",
+    "tests": {
+      "result": ["ilapp11.tlv.sap.corp"]
+    }
+  },
+  {
+    "id": 4,
+    "name": "Aytee - Luware",
+    "type": "GET",
+    "url": "https://ayteeluware.internal.cfapps.sap.hana.ondemand.com",
+    "tests": {
+      "status": 200
+    }
+  },
+  {
+    "id": 5,
+    "name": "My sample app4",
+    "type": "GET",
+    "url": "https://github.wdf.sap.corp/rewqerw",
+    "tests": {
+      "status": 404
+    }
+  }
+]
