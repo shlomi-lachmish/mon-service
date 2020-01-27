@@ -18,6 +18,8 @@ const instance = axios.create({
   })
 });
 
+const validUrl = require("valid-url");
+
 const getData = async element => {
   try {
     const thePL = element.hasOwnProperty("payload")
@@ -105,14 +107,7 @@ const getData = async element => {
     // console.log(`${element.name}: ${chalk.bgRed("Dead")} ${emojic.x}`);
   }
 };
-const isValidUrl = string => {
-  try {
-    new URL(string);
-    return true;
-  } catch (_) {
-    return false;
-  }
-};
+
 class MonitorCommand extends Command {
   async run() {
     const { flags } = this.parse(MonitorCommand);
@@ -122,7 +117,7 @@ class MonitorCommand extends Command {
     // const agent = new https.Agent({
     //   rejectUnauthorized: false
     // });
-    if (isValidUrl(fileName.trim())) {
+    if (validUrl.isUri(fileName.trim())) {
       this.log(`This is the url name you gave me: ${fileName}`);
       instance
         .get(fileName)
