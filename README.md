@@ -20,7 +20,7 @@ $ npm install -g mon-service
 $ mon-service COMMAND
 running command...
 $ mon-service (-v|--version|version)
-mon-service/0.0.5 darwin-x64 node-v13.7.0
+mon-service/0.0.6 darwin-x64 node-v13.7.0
 $ mon-service --help [COMMAND]
 USAGE
   $ mon-service COMMAND
@@ -51,7 +51,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/hello.js](https://github.com/shlomi-lachmish/mon-service/blob/v0.0.5/src/commands/hello.js)_
+_See code: [src/commands/hello.js](https://github.com/shlomi-lachmish/mon-service/blob/v0.0.6/src/commands/hello.js)_
 
 ## `mon-service help [COMMAND]`
 
@@ -86,5 +86,5 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/monitor.js](https://github.com/shlomi-lachmish/mon-service/blob/v0.0.5/src/commands/monitor.js)_
+_See code: [src/commands/monitor.js](https://github.com/shlomi-lachmish/mon-service/blob/v0.0.6/src/commands/monitor.js)_
 <!-- commandsstop -->

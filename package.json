@@ -1,7 +1,7 @@
 {
   "name": "mon-service",
   "description": "easy monitoring cli",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Shlomi Lachmish @shlomi-lachmish",
   "bin": {
     "mon-service": "./bin/run"
