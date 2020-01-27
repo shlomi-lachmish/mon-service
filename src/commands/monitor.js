@@ -139,7 +139,7 @@ class MonitorCommand extends Command {
         });
     } else {
       this.log(`This is the file name you gave me: ${fileName}`);
-      readFileAsync(`${__dirname}/../../${fileName}`, { encoding: "utf8" })
+      readFileAsync(fileName, { encoding: "utf8" })
         .then(contents => {
           console.log(contents);
           let arrTests = JSON.parse(contents);
