@@ -5,10 +5,10 @@
 /* eslint-disable quotes */
 /* eslint-disable indent */
 const { Command, flags } = require("@oclif/command");
-// const { promisify } = require("util");
+const { promisify } = require("util");
 const fs = require("fs");
 const https = require("https");
-// const readFileAsync = promisify(fs.readFile);
+const readFileAsync = promisify(fs.readFile);
 const emojic = require("emojic");
 const chalk = require("chalk");
 const axios = require("axios");
@@ -105,30 +105,53 @@ const getData = async element => {
     // console.log(`${element.name}: ${chalk.bgRed("Dead")} ${emojic.x}`);
   }
 };
-
+const isValidUrl = string => {
+  try {
+    new URL(string);
+    return true;
+  } catch (_) {
+    return false;
+  }
+};
 class MonitorCommand extends Command {
   async run() {
     const { flags } = this.parse(MonitorCommand);
     const fileName = flags.file || "Please add test file path...";
-    this.log(`This is the file name you gave me: ${fileName}`);
 
     // readFileAsync(axios.get('db.json') .then(//...), { encoding: "utf8" })
     // const agent = new https.Agent({
     //   rejectUnauthorized: false
     // });
-    instance
-      .get(fileName)
-      .then(contents => {
-        // console.log(contents);
-        // let arrTests = JSON.parse(contents);
-        contents.data.forEach(element => {
-          getData(element);
+    if (isValidUrl(fileName)) {
+      this.log(`This is the url name you gave me: ${fileName}`);
+      instance
+        .get(fileName)
+        .then(contents => {
+          // console.log(contents);
+          // let arrTests = JSON.parse(contents);
+          contents.data.forEach(element => {
+            getData(element);
+          });
+        })
+        .catch(error => {
+          console.log(`err: ${error.code}`);
+          throw error;
         });
-      })
-      .catch(error => {
-        console.log(`err: ${error.code}`);
-        throw error;
-      });
+    } else {
+      this.log(`This is the file name you gave me: ${fileName}`);
+      readFileAsync(`${__dirname}/../../${fileName}`, { encoding: "utf8" })
+        .then(contents => {
+          console.log(contents);
+          let arrTests = JSON.parse(contents);
+          arrTests.forEach(element => {
+            getData(element);
+          });
+        })
+        .catch(error => {
+          console.log(`err: ${error.code}`);
+          throw error;
+        });
+    }
   }
 }
 
